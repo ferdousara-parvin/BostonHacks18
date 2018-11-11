@@ -1,0 +1,16 @@
+
+<div class="navbar-div dark-color">
+  <div class="navbar-div-container">
+    <div class="flex">
+        <i mat-button (click)="sidebarToggle()" class="fas fa-bars navbar-button white" *ngIf="user"></i>
+        <div class="text white">
+            RentStuff!
+          </div>
+    </div>
+<!-- *ngIf="!user" -->
+
+    <a class="text white login-link" routerLink="/login" routerLinkActive="active-link">
+      Login
+    </a>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+
+<!-- this creates a google map on the page with the given lat/lng from -->
+<!-- the component as the initial center of the map: -->
+<agm-map [latitude]="averageLatLng.lat" [longitude]="averageLatLng.lng">
+  <agm-marker *ngFor="let item of houses" [latitude]="item.lat" [longitude]="item.lng" (markerClick)="openDialog(item)"></agm-marker>
+
+  <!-- <agm-marker [latitude]="lat" [longitude]="lng" (markerClick)="openDialog()">
+  </agm-marker> -->
+
+
+</agm-map>

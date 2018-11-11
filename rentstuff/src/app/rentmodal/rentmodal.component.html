@@ -1,0 +1,17 @@
+<div>
+  <div>
+      <button mat-button mat-dialog-close class="right-float">Close</button>
+    <div>  
+      <img [src]="houseRented.imageurl">
+    </div>
+    <div>
+      <br>
+      <h1>{{houseRented.name}}</h1>
+      <h3>{{houseRented.renter}}</h3>
+      <br>
+    </div>
+  </div>
+  <div>
+    <button mat-button  routerLink="/enterpassword" routerLinkActive="active" mat-dialog-close>Rent this place</button>
+  </div>
+</div>

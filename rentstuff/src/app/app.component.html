@@ -1,0 +1,16 @@
+
+<div class="fullheight">
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav  #sidenav mode="over" class="sidenav-container" closed>
+          <app-sidenavcontainer></app-sidenavcontainer>
+        </mat-sidenav>
+        <mat-sidenav-content>
+    
+            <app-navbar (navToggle)='sidenav.toggle()'></app-navbar>
+            <router-outlet></router-outlet>
+    
+        </mat-sidenav-content>
+      </mat-sidenav-container>
+    
+</div>
+
