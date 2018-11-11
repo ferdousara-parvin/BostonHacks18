@@ -12,6 +12,7 @@ import com.bostonHacks.DontTrashMyHouse.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
