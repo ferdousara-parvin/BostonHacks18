@@ -13,5 +13,6 @@ import com.bostonHacks.DontTrashMyHouse.models.House;
  */
 interface HouseService {
     public House getHouse(String id);
-    
+
+    boolean unlock(String houseId, String password);
 }
