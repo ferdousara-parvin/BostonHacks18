@@ -7,6 +7,7 @@ package com.bostonHacks.DontTrashMyHouse.services;
 
 import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbUser;
+import com.bostonHacks.DontTrashMyHouse.models.House;
 import com.bostonHacks.DontTrashMyHouse.models.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.repository.HouseRepository;
 import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
@@ -35,21 +36,25 @@ public class HouseServiceImpl implements HouseService {
     UserRepository userRepository;
 
     @Override
-    public MdbHouse getHouse(String id) {
-        List<MdbHouse> toReturn = houseRepository.findAll();
+    public House getHouse(String id) {
+        List<House> toReturn = houseRepository.findAll();
         System.out.println(Arrays.toString(toReturn.toArray()));
         return toReturn.get(0);
     }
 
     @Override
-    public List<MdbHouse> getHouses() {
-        return houseRepository.findAll();
+    public List<House> getHouses() {
+        return houseRepository.findAll().stream().map(mdb -> {
+            MdbUser owner = userRepository.findById(mdb.getOwner().toString()).or
+                    return 
+                            
+                            
+        });
     }
 
     @Override
     public boolean unlock(String houseId, String password) {
         MdbHouse house = houseRepository.findById(houseId).orElse(null);
-        MdbUser owner = houseRepository.findById(house.getOwner().toString()).orElse(null);
 
         if (house == null) {
             return false;
