@@ -39,10 +39,10 @@ public class HomeController {
         return userService.edit(user);
     }
 
-    @RequestMapping(path="/login/{username}/{password}")
-    public User login(@PathVariable("username") String username, @PathVariable("password") String password) 
+    @RequestMapping(path="/login/{email}/{password}")
+    public User login(@PathVariable("email") String email, @PathVariable("password") String password) 
     {
-        return userService.login(username, password);
+        return userService.login(email, password);
     }
 
 }

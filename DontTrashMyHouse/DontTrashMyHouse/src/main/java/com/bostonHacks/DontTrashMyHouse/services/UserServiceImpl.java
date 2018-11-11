@@ -26,31 +26,46 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String id) {
+        if(userRepository.findAll() == null)
+        {
+            return null;
+        }
+        
         List<User> toReturn = userRepository.findAll();
         System.out.println(Arrays.toString(toReturn.toArray()));
         return toReturn.get(0);
     }
-    
-    public User findByUsername(String username) //throws Exception???
+
+    public User findByEmail(String email) //throws Exception???
     {
-        return userRepository.findByUsername(username);
+        return userRepository.findByEmail(email);
     }
-    
+
     @Override
-    public User save(User user){
+    public User save(User user) {
         return userRepository.save(user);
     }
-    
+
     @Override
-    public User edit(User user){
+    public User edit(User user) {
         return userRepository.save(user);
     }
-    
-    public User login(String username, String password){
-        return null;
+
+    @Override
+    public User login(String email, String password) {
+        User userReturned = null;
+
+        if (userRepository.findAll() != null) {
+      
+            for (User user : userRepository.findAll()) {
+                if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                    userReturned = user;
+                }
+
+            }
+        }
+
+        return userReturned;
     }
-    
-    
-    
-    
+
 }

@@ -21,5 +21,8 @@ interface UserService {
     
     public User edit(User user);
     
-    public User login(String username, String password);
+    public User login(String email, String password);
+    
+    public User findByEmail(String email);
+    
 }
