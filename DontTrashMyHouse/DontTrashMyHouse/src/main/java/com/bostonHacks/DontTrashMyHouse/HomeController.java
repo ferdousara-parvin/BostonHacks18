@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 /**
- *
  * @author Etienne
  */
 @RestController
@@ -40,14 +39,14 @@ public class HomeController {
     }
 
 
-    @RequestMapping(path="/login/{email}/{password}")
-    public User login(@PathVariable("email") String email, @PathVariable("password") String password)  
-    {
+    @RequestMapping(path = "/login/{email}/{password}")
+    public User login(@PathVariable("email") String email, @PathVariable("password") String password) {
         return userService.login(email, password);
     }
 
-    @PostMapping("/unlock/{id}")
-    public @ResponseBody boolean unlockDoor(@PathVariable String houseId, @RequestBody String password ){
+    @PostMapping("/unlock/{houseId}")
+    public @ResponseBody
+    boolean unlockDoor(@PathVariable String houseId, @RequestBody String password) {
         return houseService.unlock(houseId, password);
     }
 
