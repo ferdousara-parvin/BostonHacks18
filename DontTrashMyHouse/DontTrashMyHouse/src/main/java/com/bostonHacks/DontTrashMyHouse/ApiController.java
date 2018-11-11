@@ -47,7 +47,7 @@ public class ApiController {
         return userService.login(email, password);
     }
 
-    @GetMapping("/unlock/{password}")
+    @RequestMapping("/unlock/{houseId}/{password}")
     public @ResponseBody
     boolean unlockDoor(@PathVariable String houseId, @PathVariable String password) {
         return houseService.unlock(houseId, password);
