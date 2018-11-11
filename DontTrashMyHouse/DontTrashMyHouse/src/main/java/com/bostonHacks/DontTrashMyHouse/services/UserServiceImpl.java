@@ -29,4 +29,9 @@ public class UserServiceImpl implements UserService {
         System.out.println(Arrays.toString(toReturn.toArray()));
         return toReturn.get(0);
     }
+    
+    @Override
+    public User save(User user){
+        return userRepository.save(user);
+    }
 }
