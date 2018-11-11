@@ -31,34 +31,31 @@ public class UserServiceImpl implements UserService {
         return u;
     }
 
-    public User findByEmail(String email)
-    {
+    public User findByEmail(String email) {
         return userRepository.findByEmail(email).toUser();
     }
 
     @Override
     public User save(User user) {
         MdbUser toReturn = userRepository.save(user.toMdbUser());
-        return toReturn.toUser() ;
+        return toReturn.toUser();
     }
 
     @Override
     public User edit(User user) {
         MdbUser toReturn = userRepository.save(user.toMdbUser());
-        return toReturn.toUser() ;
+        return toReturn.toUser();
     }
 
     @Override
     public User login(String email, String password) {
         User userReturned = null;
 
-        if (userRepository.findAll() != null) {
+        MdbUser user = userRepository.findByEmail(email);
 
-            for (MdbUser user : userRepository.findAll()) {
-                if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                    userReturned = user.toUser();
-                }
-
+        if (userRepository.findByEmail(email) != null) {
+            if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
+                userReturned = user.toUser();
             }
         }
 
