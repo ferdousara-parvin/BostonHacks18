@@ -24,16 +24,10 @@ public class HomeController {
     @Autowired
     UserServiceImpl userService;
 
-    @RequestMapping("")
-    public User index() {
+    @RequestMapping("/getuser")
+    public User getUser() {
         return userService.getUser("5be76ede1c9d4400005539bb");
     }
-    
-//    @RequestMapping("/getuser")
-//    public User getUser()
-//    {
-//        return userService.getUser(id);
-//    }
 
     @PostMapping("/create")
     public User createUser(@RequestBody User user) {
