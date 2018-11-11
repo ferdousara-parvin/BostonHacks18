@@ -1,6 +1,5 @@
 package com.bostonHacks.DontTrashMyHouse.repository;
 
-import com.bostonHacks.DontTrashMyHouse.models.Rental;
 import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbRental;
 import org.springframework.data.mongodb.repository.MongoRepository;
 

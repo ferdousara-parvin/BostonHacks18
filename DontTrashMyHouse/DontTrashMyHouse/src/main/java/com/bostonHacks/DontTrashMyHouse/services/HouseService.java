@@ -5,7 +5,8 @@
  */
 package com.bostonHacks.DontTrashMyHouse.services;
 
-import com.bostonHacks.DontTrashMyHouse.models.MdbHouse;
+import com.bostonHacks.DontTrashMyHouse.models.House;
+
 import java.util.List;
 
 /**
@@ -13,9 +14,9 @@ import java.util.List;
  * @author tlgmz
  */
 interface HouseService {
-    public MdbHouse getHouse(String id);
+    public House getHouse(String id);
     
-    public List<MdbHouse> getHouses();
+    public List<House> getHouses();
 
     boolean unlock(String houseId, String password);
 }

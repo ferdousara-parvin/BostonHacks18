@@ -8,9 +8,11 @@ package com.bostonHacks.DontTrashMyHouse.services;
 import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbUser;
 import com.bostonHacks.DontTrashMyHouse.models.House;
-import com.bostonHacks.DontTrashMyHouse.models.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.repository.HouseRepository;
 import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
+import com.bostonHacks.DontTrashMyHouse.util.ParameterStringBuilder;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -19,10 +21,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import com.bostonHacks.DontTrashMyHouse.util.ParameterStringBuilder;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import java.util.stream.Collectors;
 
 /**
  * @author tlgmz
@@ -37,19 +36,19 @@ public class HouseServiceImpl implements HouseService {
 
     @Override
     public House getHouse(String id) {
-        List<House> toReturn = houseRepository.findAll();
-        System.out.println(Arrays.toString(toReturn.toArray()));
-        return toReturn.get(0);
+        MdbHouse toReturn = houseRepository.findById(id).orElse(null);
+        MdbUser owner = userRepository.findById(toReturn.getOwner().toString()).orElse(null);
+        return new House(toReturn.getId(), toReturn.getAddress(), toReturn.getLatitude(), toReturn.getLongitude(), toReturn.getAppNumber(), owner.toUser(), toReturn.isUsed(), toReturn.getRating(), toReturn.getCode(), toReturn.getImageurl(), toReturn.getLock());
     }
 
     @Override
     public List<House> getHouses() {
         return houseRepository.findAll().stream().map(mdb -> {
-            MdbUser owner = userRepository.findById(mdb.getOwner().toString()).or
-                    return 
-                            
-                            
-        });
+            MdbUser owner = userRepository.findById(mdb.getOwner().toString()).orElse(null);
+            return new House(mdb.getId(), mdb.getAddress(), mdb.getLatitude(), mdb.getLongitude(),
+                    mdb.getAppNumber(), ((owner != null)?owner.toUser():null),mdb.isUsed(), mdb.getRating(),
+                    mdb.getCode(), mdb.getImageurl(), mdb.getLock());
+        }).collect(Collectors.toList());
     }
 
     @Override
@@ -95,7 +94,6 @@ public class HouseServiceImpl implements HouseService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
         return false;
     }
 }

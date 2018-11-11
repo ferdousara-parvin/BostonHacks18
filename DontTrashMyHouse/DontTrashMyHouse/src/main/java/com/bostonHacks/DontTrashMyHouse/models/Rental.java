@@ -10,7 +10,7 @@ public class Rental {
 
     @Id
     private String id;
-    private MdbHouse house;
+    private House house;
     private User renter;
     private Date startDate;
     private Date endDate;
@@ -19,7 +19,7 @@ public class Rental {
     public Rental() {
     }
 
-    public Rental(String id, MdbHouse house, User renter, Date startDate, Date endDate, String imageurl) {
+    public Rental(String id, House house, User renter, Date startDate, Date endDate, String imageurl) {
         this.id = id;
         this.house = house;
         this.renter = renter;
@@ -36,11 +36,11 @@ public class Rental {
         this.id = id;
     }
 
-    public MdbHouse getHouse() {
+    public House getHouse() {
         return house;
     }
 
-    public void setHouse(MdbHouse house) {
+    public void setHouse(House house) {
         this.house = house;
     }
 

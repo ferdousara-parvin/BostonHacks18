@@ -5,12 +5,16 @@ C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHous
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\repository\HouseRepository.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\services\HouseServiceImpl.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\util\ParameterStringBuilder.java
+C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\mdbModels\MdbUser.java
+C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\ApiController.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\repository\UserRepository.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\repository\RentalRepository.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\models\Rental.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\HomeController.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\services\RentalServiceImpl.java
+C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\mdbModels\MdbRental.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\services\RentalService.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\models\House.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\models\Lock.java
+C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\mdbModels\MdbHouse.java
 C:\Users\Etienne\Documents\GitHub\BostonHacks18\DontTrashMyHouse\DontTrashMyHouse\src\main\java\com\bostonHacks\DontTrashMyHouse\services\UserService.java

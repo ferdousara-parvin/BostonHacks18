@@ -1,6 +1,8 @@
 package com.bostonHacks.DontTrashMyHouse.mdbModels;
 
+import com.bostonHacks.DontTrashMyHouse.models.House;
 import com.bostonHacks.DontTrashMyHouse.models.Lock;
+import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -125,4 +127,11 @@ public class MdbHouse {
     public void setLock(Lock lock) {
         this.lock = lock;
     }
+
+    public House toHouse(MdbHouse toReturn, UserRepository repo){
+        MdbUser owner = repo.findById(toReturn.getOwner().toString()).orElse(null);
+        return new House(toReturn.getId(), toReturn.getAddress(),toReturn.getLatitude(),toReturn.getLongitude(),toReturn.getAppNumber(),(owner!=null)?owner.toUser():null, toReturn.isUsed(), toReturn.getRating(), toReturn.getCode(), toReturn.getImageurl(), toReturn.getLock());
+    }
+
+
 }

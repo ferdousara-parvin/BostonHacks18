@@ -8,6 +8,7 @@ package com.bostonHacks.DontTrashMyHouse.services;
 import java.util.Arrays;
 import java.util.List;
 
+import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbUser;
 import com.bostonHacks.DontTrashMyHouse.models.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
@@ -15,7 +16,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
  * @author Etienne
  */
 @Service
@@ -26,30 +26,29 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String id) {
-        if(userRepository.findAll() == null)
-        {
+        if (userRepository.findAll() == null) {
             return null;
         }
-        
-        User toReturn = userRepository.findById(id).orElse(null);
-        if(toReturn != null)
-        System.out.println(Arrays.toString(toReturn.toArray()));
-        return toReturn.get(0);
+
+        MdbUser toReturn = userRepository.findById(id).orElse(null);
+        return (toReturn != null) ? toReturn.toUser() : null;
     }
 
-    public User findByEmail(String email) //throws Exception???
+    public User findByEmail(String email)
     {
-        return userRepository.findByEmail(email);
+        return userRepository.findByEmail(email).toUser();
     }
 
     @Override
     public User save(User user) {
-        return userRepository.save(user);
+        MdbUser toReturn = userRepository.save(user.toMdbUser());
+        return toReturn.toUser() ;
     }
 
     @Override
     public User edit(User user) {
-        return userRepository.save(user);
+        MdbUser toReturn = userRepository.save(user.toMdbUser());
+        return toReturn.toUser() ;
     }
 
     @Override
@@ -57,10 +56,10 @@ public class UserServiceImpl implements UserService {
         User userReturned = null;
 
         if (userRepository.findAll() != null) {
-      
-            for (User user : userRepository.findAll()) {
+
+            for (MdbUser user : userRepository.findAll()) {
                 if (user.getEmail().equals(email) && user.getPassword().equals(password)) {
-                    userReturned = user;
+                    userReturned = user.toUser();
                 }
 
             }
@@ -68,6 +67,6 @@ public class UserServiceImpl implements UserService {
 
         return userReturned;
     }
-   
+
 
 }

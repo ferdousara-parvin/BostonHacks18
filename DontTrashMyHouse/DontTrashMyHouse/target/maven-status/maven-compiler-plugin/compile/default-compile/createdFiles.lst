@@ -1,8 +1,12 @@
 com\bostonHacks\DontTrashMyHouse\models\House.class
+com\bostonHacks\DontTrashMyHouse\mdbModels\MdbRental.class
+com\bostonHacks\DontTrashMyHouse\mdbModels\MdbUser.class
 com\bostonHacks\DontTrashMyHouse\models\Lock.class
 com\bostonHacks\DontTrashMyHouse\util\ParameterStringBuilder.class
 com\bostonHacks\DontTrashMyHouse\HomeController.class
+com\bostonHacks\DontTrashMyHouse\ApiController.class
 com\bostonHacks\DontTrashMyHouse\services\HouseServiceImpl.class
+com\bostonHacks\DontTrashMyHouse\mdbModels\MdbHouse.class
 com\bostonHacks\DontTrashMyHouse\services\RentalServiceImpl.class
 com\bostonHacks\DontTrashMyHouse\repository\RentalRepository.class
 com\bostonHacks\DontTrashMyHouse\repository\UserRepository.class
