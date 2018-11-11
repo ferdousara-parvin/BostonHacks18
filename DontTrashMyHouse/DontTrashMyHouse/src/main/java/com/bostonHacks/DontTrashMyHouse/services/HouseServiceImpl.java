@@ -12,7 +12,12 @@ import com.bostonHacks.DontTrashMyHouse.repository.HouseRepository;
 import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
 import com.bostonHacks.DontTrashMyHouse.util.ParameterStringBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -46,7 +51,7 @@ public class HouseServiceImpl implements HouseService {
         return houseRepository.findAll().stream().map(mdb -> {
             MdbUser owner = userRepository.findById(mdb.getOwner().toString()).orElse(null);
             return new House(mdb.getId(), mdb.getAddress(), mdb.getLatitude(), mdb.getLongitude(),
-                    mdb.getAppNumber(), ((owner != null)?owner.toUser():null),mdb.isUsed(), mdb.getRating(),
+                    mdb.getAppNumber(), ((owner != null) ? owner.toUser() : null), mdb.isUsed(), mdb.getRating(),
                     mdb.getCode(), mdb.getLock());
         }).collect(Collectors.toList());
     }
@@ -59,41 +64,10 @@ public class HouseServiceImpl implements HouseService {
             return false;
         }
 
-        try {
-            URL url = new URL(house.getLock().getEndpoint());
-            HttpURLConnection connection = null;
+        RestTemplate rest = new RestTemplate();
 
-            connection = (HttpURLConnection) url.openConnection();
-            connection.setRequestMethod("GET");
+        String response = rest.getForObject("http://10.192.200.179/PWD=" + password, String.class);
 
-            connection.setRequestProperty("Content-Type", "application/json");
-
-            connection.setConnectTimeout(5000);
-            connection.setReadTimeout(5000);
-
-            Map<String, String> parameters = new HashMap<>();
-            parameters.put("PWD", password);
-
-            connection.setDoOutput(true);
-            DataOutputStream out = new DataOutputStream(connection.getOutputStream());
-            out.writeBytes(ParameterStringBuilder.getParamsString(parameters));
-            out.flush();
-            out.close();
-
-            InputStream is = connection.getInputStream();
-            BufferedReader rd = new BufferedReader(new InputStreamReader(is));
-            StringBuilder response = new StringBuilder(); // or StringBuffer if Java version 5+
-            String line;
-            while ((line = rd.readLine()) != null) {
-                response.append(line);
-                response.append('\r');
-            }
-            rd.close();
-            return ("accepted".equals(response.toString()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return false;
+        return true;
     }
 }
