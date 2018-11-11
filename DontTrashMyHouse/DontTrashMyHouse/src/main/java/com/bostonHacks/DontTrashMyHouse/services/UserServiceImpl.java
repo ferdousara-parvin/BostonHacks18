@@ -26,12 +26,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUser(String id) {
-        if (userRepository.findAll() == null) {
-            return null;
-        }
-
         MdbUser toReturn = userRepository.findById(id).orElse(null);
-        return (toReturn != null) ? toReturn.toUser() : null;
+        User u = (toReturn != null) ? toReturn.toUser() : null;
+        return u;
     }
 
     public User findByEmail(String email)

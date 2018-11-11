@@ -3,11 +3,13 @@ package com.bostonHacks.DontTrashMyHouse.mdbModels;
 import com.bostonHacks.DontTrashMyHouse.models.House;
 import com.bostonHacks.DontTrashMyHouse.models.Lock;
 import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection = "houses")
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class MdbHouse {
 
     @Id
@@ -20,7 +22,6 @@ public class MdbHouse {
     private boolean used;
     private int rating;
     private int code;
-    private String imageurl;
     private Lock lock;
 
     public MdbHouse() {
@@ -36,7 +37,6 @@ public class MdbHouse {
         this.used = used;
         this.rating = rating;
         this.code = code;
-        this.imageurl = imageurl;
         this.lock = lock;
     }
 
@@ -112,14 +112,6 @@ public class MdbHouse {
         this.code = code;
     }
 
-    public String getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
-    }
-
     public Lock getLock() {
         return lock;
     }
@@ -130,7 +122,7 @@ public class MdbHouse {
 
     public House toHouse(MdbHouse toReturn, UserRepository repo){
         MdbUser owner = repo.findById(toReturn.getOwner().toString()).orElse(null);
-        return new House(toReturn.getId(), toReturn.getAddress(),toReturn.getLatitude(),toReturn.getLongitude(),toReturn.getAppNumber(),(owner!=null)?owner.toUser():null, toReturn.isUsed(), toReturn.getRating(), toReturn.getCode(), toReturn.getImageurl(), toReturn.getLock());
+        return new House(toReturn.getId(), toReturn.getAddress(),toReturn.getLatitude(),toReturn.getLongitude(),toReturn.getAppNumber(),(owner!=null)?owner.toUser():null, toReturn.isUsed(), toReturn.getRating(), toReturn.getCode(), toReturn.getLock());
     }
 
 
