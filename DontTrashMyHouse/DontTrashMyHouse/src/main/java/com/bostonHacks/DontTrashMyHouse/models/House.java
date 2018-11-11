@@ -17,11 +17,12 @@ public class House {
     private int rating;
     private int code;
     private String imageurl;
+    private Lock lock;
 
     public House() {
     }
 
-    public House(String id, String address, String latitude, String longitude, int appNumber, User owner, boolean used, int rating, int code, String imageurl) {
+    public House(String id, String address, String latitude, String longitude, int appNumber, User owner, boolean used, int rating, int code, String imageurl, Lock lock) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
@@ -32,6 +33,7 @@ public class House {
         this.rating = rating;
         this.code = code;
         this.imageurl = imageurl;
+        this.lock = lock;
     }
 
     public String getId() {
@@ -114,4 +116,11 @@ public class House {
         this.imageurl = imageurl;
     }
 
+    public Lock getLock() {
+        return lock;
+    }
+
+    public void setLock(Lock lock) {
+        this.lock = lock;
+    }
 }

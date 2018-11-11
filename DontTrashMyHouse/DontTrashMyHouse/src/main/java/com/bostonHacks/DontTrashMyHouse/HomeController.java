@@ -6,13 +6,10 @@
 package com.bostonHacks.DontTrashMyHouse;
 
 import com.bostonHacks.DontTrashMyHouse.models.User;
+import com.bostonHacks.DontTrashMyHouse.services.HouseServiceImpl;
 import com.bostonHacks.DontTrashMyHouse.services.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -23,6 +20,9 @@ public class HomeController {
 
     @Autowired
     UserServiceImpl userService;
+
+    @Autowired
+    HouseServiceImpl houseService;
 
     @RequestMapping("/getuser")
     public User getUser() {
@@ -39,10 +39,15 @@ public class HomeController {
         return userService.edit(user);
     }
 
-    @RequestMapping(path="/login/{username}/{password}")
+    @PostMapping(path="/login/{username}/{password}")
     public User login(@PathVariable("username") String username, @PathVariable("password") String password) 
     {
         return userService.login(username, password);
+    }
+
+    @PostMapping("/unlock/{id}")
+    public @ResponseBody boolean unlockDoor(@PathVariable String houseId, @RequestBody String password ){
+        return houseService.unlock(houseId, password);
     }
 
 }
