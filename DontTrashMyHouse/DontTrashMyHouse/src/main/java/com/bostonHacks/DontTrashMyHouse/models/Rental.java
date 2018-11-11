@@ -5,22 +5,25 @@ import org.springframework.data.annotation.Id;
 import java.util.Date;
 
 public class Rental {
+
     @Id
     private String id;
     private House house;
     private User renter;
     private Date startDate;
     private Date endDate;
+    private String imageurl;
 
     public Rental() {
     }
 
-    public Rental(String id, House house, User renter, Date startDate, Date endDate) {
+    public Rental(String id, House house, User renter, Date startDate, Date endDate, String imageurl) {
         this.id = id;
         this.house = house;
         this.renter = renter;
         this.startDate = startDate;
         this.endDate = endDate;
+        this.imageurl = imageurl;
     }
 
     public String getId() {
@@ -61,5 +64,13 @@ public class Rental {
 
     public void setEndDate(Date endDate) {
         this.endDate = endDate;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 }

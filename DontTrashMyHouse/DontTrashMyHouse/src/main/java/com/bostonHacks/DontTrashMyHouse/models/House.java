@@ -3,8 +3,9 @@ package com.bostonHacks.DontTrashMyHouse.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection="houses")
+@Document(collection = "houses")
 public class House {
+
     @Id
     private String id;
     private String address;
@@ -15,11 +16,12 @@ public class House {
     private boolean used;
     private int rating;
     private int code;
+    private String imageurl;
 
     public House() {
     }
 
-    public House(String id, String address, String latitude, String longitude, int appNumber, User owner, boolean used, int rating, int code) {
+    public House(String id, String address, String latitude, String longitude, int appNumber, User owner, boolean used, int rating, int code, String imageurl) {
         this.id = id;
         this.address = address;
         this.latitude = latitude;
@@ -29,6 +31,7 @@ public class House {
         this.used = used;
         this.rating = rating;
         this.code = code;
+        this.imageurl = imageurl;
     }
 
     public String getId() {
@@ -101,6 +104,14 @@ public class House {
 
     public void setCode(int code) {
         this.code = code;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 
 }

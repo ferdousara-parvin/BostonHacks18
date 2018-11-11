@@ -30,8 +30,26 @@ public class UserServiceImpl implements UserService {
         return toReturn.get(0);
     }
     
+    public User findByUsername(String username) //throws Exception???
+    {
+        return userRepository.findByUsername(username);
+    }
+    
     @Override
     public User save(User user){
         return userRepository.save(user);
     }
+    
+    @Override
+    public User edit(User user){
+        return userRepository.save(user);
+    }
+    
+    public User login(String username, String password){
+        return null;
+    }
+    
+    
+    
+    
 }

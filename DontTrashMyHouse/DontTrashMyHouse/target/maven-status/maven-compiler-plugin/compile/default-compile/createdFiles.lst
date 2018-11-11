@@ -1,6 +1,0 @@
-com\bostonHacks\DontTrashMyHouse\HomeController.class
-com\bostonHacks\DontTrashMyHouse\services\UserService.class
-com\bostonHacks\DontTrashMyHouse\services\UserServiceImpl.class
-com\bostonHacks\DontTrashMyHouse\models\Users.class
-com\bostonHacks\DontTrashMyHouse\DontTrashMyHouseApplication.class
-com\bostonHacks\DontTrashMyHouse\repository\UserRepository.class

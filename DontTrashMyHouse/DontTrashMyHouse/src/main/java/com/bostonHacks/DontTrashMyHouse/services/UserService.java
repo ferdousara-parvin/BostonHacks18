@@ -17,5 +17,9 @@ interface UserService {
 
     public User getUser(String id);
 
-    public User save(USer user);
+    public User save(User user);
+    
+    public User edit(User user);
+    
+    public User login(String username, String password);
 }

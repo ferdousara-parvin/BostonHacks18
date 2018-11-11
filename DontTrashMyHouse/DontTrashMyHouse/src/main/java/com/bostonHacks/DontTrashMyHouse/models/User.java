@@ -24,11 +24,12 @@ public class User {
     private String credit_num;
     private String exp;
     private int ccv;
+    private String imageurl;
 
     public User() {
     }
 
-    public User(String id, String name, String email, String password, int age, String credit_num, String exp, int ccv) {
+    public User(String id, String name, String email, String password, int age, String credit_num, String exp, int ccv, String imageurl) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -37,6 +38,7 @@ public class User {
         this.credit_num = credit_num;
         this.exp = exp;
         this.ccv = ccv;
+        this.imageurl = imageurl;
     }
 
     public String getId() {
@@ -105,5 +107,13 @@ public class User {
 
     public User getUser() {
         return this;
+    }
+
+    public String getImageurl() {
+        return imageurl;
+    }
+
+    public void setImageurl(String imageurl) {
+        this.imageurl = imageurl;
     }
 }
