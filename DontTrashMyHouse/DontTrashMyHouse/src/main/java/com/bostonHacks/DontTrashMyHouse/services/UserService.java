@@ -5,7 +5,9 @@
  */
 package com.bostonHacks.DontTrashMyHouse.services;
 
+import com.bostonHacks.DontTrashMyHouse.models.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.models.User;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 /**

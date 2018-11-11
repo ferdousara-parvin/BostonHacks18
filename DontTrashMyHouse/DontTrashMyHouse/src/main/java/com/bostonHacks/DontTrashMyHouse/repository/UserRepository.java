@@ -5,6 +5,7 @@
  */
 package com.bostonHacks.DontTrashMyHouse.repository;
 
+import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbUser;
 import com.bostonHacks.DontTrashMyHouse.models.User;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.stereotype.Repository;
@@ -14,6 +15,6 @@ import org.springframework.stereotype.Repository;
  * @author Etienne
  */
 @Repository
-public interface UserRepository extends MongoRepository<User, String>{
+public interface UserRepository extends MongoRepository<MdbUser, String>{
     User findByEmail(String email);
 }

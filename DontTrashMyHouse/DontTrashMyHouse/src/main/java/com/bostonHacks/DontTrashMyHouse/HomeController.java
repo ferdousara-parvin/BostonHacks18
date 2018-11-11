@@ -5,9 +5,11 @@
  */
 package com.bostonHacks.DontTrashMyHouse;
 
+import com.bostonHacks.DontTrashMyHouse.models.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.models.User;
 import com.bostonHacks.DontTrashMyHouse.services.HouseServiceImpl;
 import com.bostonHacks.DontTrashMyHouse.services.UserServiceImpl;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,9 +25,9 @@ public class HomeController {
     @Autowired
     HouseServiceImpl houseService;
 
-    @RequestMapping("/getuser")
-    public User getUser() {
-        return userService.getUser("5be76ede1c9d4400005539bb");
+    @RequestMapping("/getuser/{name}")
+    public User getUser(@PathVariable("name") String name) {
+        return userService.getUser(name);
     }
 
     @PostMapping("/create")
@@ -38,7 +40,6 @@ public class HomeController {
         return userService.edit(user);
     }
 
-
     @RequestMapping(path = "/login/{email}/{password}")
     public User login(@PathVariable("email") String email, @PathVariable("password") String password) {
         return userService.login(email, password);
@@ -48,6 +49,16 @@ public class HomeController {
     public @ResponseBody
     boolean unlockDoor(@PathVariable String houseId, @RequestBody String password) {
         return houseService.unlock(houseId, password);
+    }
+
+    @RequestMapping("/gethouse/{id}")
+    public MdbHouse getHouse(@PathVariable("id") String id) {
+        return houseService.getHouse(id);
+    }
+
+    @RequestMapping("/gethouses")
+    public List<MdbHouse> getHouses() {
+        return houseService.getHouses();
     }
 
 }

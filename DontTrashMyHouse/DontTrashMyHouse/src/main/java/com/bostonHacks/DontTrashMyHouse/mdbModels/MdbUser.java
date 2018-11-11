@@ -5,6 +5,7 @@
  */
 package com.bostonHacks.DontTrashMyHouse.mdbModels;
 
+import com.bostonHacks.DontTrashMyHouse.models.User;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -115,5 +116,9 @@ public class MdbUser {
 
     public void setImageurl(String imageurl) {
         this.imageurl = imageurl;
+    }
+    
+    public User toUser(){
+        return new User(this.id,this.name, this.email, this.password, this.age, this.credit_num, this.exp, this.ccv, this.imageurl);
     }
 }

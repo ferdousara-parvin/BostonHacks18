@@ -5,8 +5,11 @@
  */
 package com.bostonHacks.DontTrashMyHouse.services;
 
-import com.bostonHacks.DontTrashMyHouse.models.House;
+import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbHouse;
+import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbUser;
+import com.bostonHacks.DontTrashMyHouse.models.MdbHouse;
 import com.bostonHacks.DontTrashMyHouse.repository.HouseRepository;
+import com.bostonHacks.DontTrashMyHouse.repository.UserRepository;
 
 import java.io.*;
 import java.net.HttpURLConnection;
@@ -23,26 +26,34 @@ import org.springframework.stereotype.Service;
 /**
  * @author tlgmz
  */
-
 @Service
 public class HouseServiceImpl implements HouseService {
+
     @Autowired
     HouseRepository houseRepository;
+    @Autowired
+    UserRepository userRepository;
 
     @Override
-    public House getHouse(String id) {
-        List<House> toReturn = houseRepository.findAll();
+    public MdbHouse getHouse(String id) {
+        List<MdbHouse> toReturn = houseRepository.findAll();
         System.out.println(Arrays.toString(toReturn.toArray()));
         return toReturn.get(0);
     }
 
     @Override
+    public List<MdbHouse> getHouses() {
+        return houseRepository.findAll();
+    }
+
+    @Override
     public boolean unlock(String houseId, String password) {
-        House house = houseRepository.findById(houseId).orElse(null);
+        MdbHouse house = houseRepository.findById(houseId).orElse(null);
+        MdbUser owner = houseRepository.findById(house.getOwner().toString()).orElse(null);
 
-        if (house == null)
+        if (house == null) {
             return false;
-
+        }
 
         try {
             URL url = new URL(house.getLock().getEndpoint());
@@ -79,7 +90,6 @@ public class HouseServiceImpl implements HouseService {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return false;
     }

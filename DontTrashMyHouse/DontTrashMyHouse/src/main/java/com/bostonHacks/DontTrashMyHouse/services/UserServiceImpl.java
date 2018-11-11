@@ -31,7 +31,8 @@ public class UserServiceImpl implements UserService {
             return null;
         }
         
-        List<User> toReturn = userRepository.findAll();
+        User toReturn = userRepository.findById(id).orElse(null);
+        if(toReturn != null)
         System.out.println(Arrays.toString(toReturn.toArray()));
         return toReturn.get(0);
     }
@@ -67,5 +68,6 @@ public class UserServiceImpl implements UserService {
 
         return userReturned;
     }
+   
 
 }

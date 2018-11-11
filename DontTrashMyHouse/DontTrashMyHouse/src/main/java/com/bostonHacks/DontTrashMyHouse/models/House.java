@@ -3,7 +3,7 @@ package com.bostonHacks.DontTrashMyHouse.models;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-@Document(collection = "houses")
+
 public class House {
 
     @Id
