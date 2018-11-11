@@ -25,12 +25,11 @@ public class MdbUser {
     private String credit_num;
     private String exp;
     private int ccv;
-    private String imageurl;
 
     public MdbUser() {
     }
 
-    public MdbUser(String id, String name, String email, String password, int age, String credit_num, String exp, int ccv, String imageurl) {
+    public MdbUser(String id, String name, String email, String password, int age, String credit_num, String exp, int ccv) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -39,7 +38,6 @@ public class MdbUser {
         this.credit_num = credit_num;
         this.exp = exp;
         this.ccv = ccv;
-        this.imageurl = imageurl;
     }
 
     public String getId() {
@@ -110,15 +108,7 @@ public class MdbUser {
         return this;
     }
 
-    public String getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
-    }
-    
     public User toUser(){
-        return new User(this.id,this.name, this.email, this.password, this.age, this.credit_num, this.exp, this.ccv, this.imageurl);
+        return new User(this.id,this.name, this.email, this.password, this.age, this.credit_num, this.exp, this.ccv);
     }
 }

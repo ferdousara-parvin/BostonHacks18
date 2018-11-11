@@ -38,7 +38,7 @@ public class HouseServiceImpl implements HouseService {
     public House getHouse(String id) {
         MdbHouse toReturn = houseRepository.findById(id).orElse(null);
         MdbUser owner = userRepository.findById(toReturn.getOwner().toString()).orElse(null);
-        return new House(toReturn.getId(), toReturn.getAddress(), toReturn.getLatitude(), toReturn.getLongitude(), toReturn.getAppNumber(), owner.toUser(), toReturn.isUsed(), toReturn.getRating(), toReturn.getCode(), toReturn.getImageurl(), toReturn.getLock());
+        return new House(toReturn.getId(), toReturn.getAddress(), toReturn.getLatitude(), toReturn.getLongitude(), toReturn.getAppNumber(), owner.toUser(), toReturn.isUsed(), toReturn.getRating(), toReturn.getCode(), toReturn.getLock());
     }
 
     @Override
@@ -47,7 +47,7 @@ public class HouseServiceImpl implements HouseService {
             MdbUser owner = userRepository.findById(mdb.getOwner().toString()).orElse(null);
             return new House(mdb.getId(), mdb.getAddress(), mdb.getLatitude(), mdb.getLongitude(),
                     mdb.getAppNumber(), ((owner != null)?owner.toUser():null),mdb.isUsed(), mdb.getRating(),
-                    mdb.getCode(), mdb.getImageurl(), mdb.getLock());
+                    mdb.getCode(), mdb.getLock());
         }).collect(Collectors.toList());
     }
 

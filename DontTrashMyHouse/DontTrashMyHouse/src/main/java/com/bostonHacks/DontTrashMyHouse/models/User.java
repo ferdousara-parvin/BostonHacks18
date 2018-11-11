@@ -6,8 +6,6 @@
 package com.bostonHacks.DontTrashMyHouse.models;
 
 import com.bostonHacks.DontTrashMyHouse.mdbModels.MdbUser;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
 
 /**
  *
@@ -24,12 +22,11 @@ public class User {
     private String credit_num;
     private String exp;
     private int ccv;
-    private String imageurl;
 
     public User() {
     }
 
-    public User(String id, String name, String email, String password, int age, String credit_num, String exp, int ccv, String imageurl) {
+    public User(String id, String name, String email, String password, int age, String credit_num, String exp, int ccv) {
         this.id = id;
         this.name = name;
         this.email = email;
@@ -38,7 +35,6 @@ public class User {
         this.credit_num = credit_num;
         this.exp = exp;
         this.ccv = ccv;
-        this.imageurl = imageurl;
     }
 
     public String getId() {
@@ -105,19 +101,7 @@ public class User {
         this.ccv = ccv;
     }
 
-    public User getUser() {
-        return this;
-    }
-
-    public String getImageurl() {
-        return imageurl;
-    }
-
-    public void setImageurl(String imageurl) {
-        this.imageurl = imageurl;
-    }
-
     public MdbUser toMdbUser(){
-        return new MdbUser(this.id,this.name, this.email, this.password, this.age, this.credit_num, this.exp, this.ccv, this.imageurl);
+        return new MdbUser(this.id,this.name, this.email, this.password, this.age, this.credit_num, this.exp, this.ccv);
     }
 }
